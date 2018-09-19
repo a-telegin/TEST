@@ -1,4 +1,6 @@
 #! /bin/bash 
+connlost="Connection is lost"
+connok="Connection is renewed"
 
 # Run loop every 2 seconds
 while sleep 2;  
@@ -8,15 +10,16 @@ do
 
 	if [[ -z "$ptime" ]] ;
 	then
-		echo "connection is lost"
+		# if ping returns 'Network is unreachable'
+		echo $connlost
 
 	else
-		# In case ping is too long let's assume connection is lost  
+		# In case ping is too long, assume connection is lost  
 		if [[ "$pingtime" -lt 1000 ]] ; 
 			then 
-				echo "connection is renewed"
+				echo $connok
 			else
-				echo "connection is lost"
+				echo $connlost
 		fi;
 	fi;
 done
