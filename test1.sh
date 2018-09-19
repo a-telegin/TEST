@@ -1,3 +1,3 @@
 #! /bin/bash -x
 
-ping 8.8.8.8
+ping 8.8.8.8 | grep "time="
